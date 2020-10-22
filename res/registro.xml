@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><registro>
+        
+    <en-stock>
+    	
+    	<articulo>
+                        
+            <nombre>Manzana</nombre>
+                        
+            <precio>1.7</precio>
+                    
+        </articulo>
+        
+        <articulo>
+           
+            <nombre>Pera</nombre>
+            
+            <precio>2.2</precio>
+             
+        </articulo>
+         
+        <articulo>
+                 
+            <nombre>Plátano</nombre>
+                        
+            <precio>1.6</precio>
+                    
+        </articulo>
+                
+        <articulo>
+                        
+            <nombre>Melón</nombre>
+                        
+            <precio>1.4</precio>
+                    
+        </articulo>
+                
+        <articulo>
+                        
+            <nombre>Sandía</nombre>
+                        
+            <precio>1.2</precio>
+                    
+        </articulo>
+                
+        <articulo>
+            
+            <nombre>Kiwi</nombre>
+                        
+            <precio>3</precio>
+                    
+        </articulo>
+                
+        <articulo>
+                        
+            <nombre>Limón</nombre>
+                        
+            <precio>1.3</precio>
+                    
+        </articulo>
+                
+        <articulo>
+                        
+            <nombre>Uva</nombre>
+                        
+            <precio>2.5</precio>
+                    
+        </articulo>
+                
+        <articulo>  
+           
+            <nombre>Naranja</nombre>
+                        
+            <precio>0.8</precio>
+                    
+        </articulo>
+                
+        <articulo>
+                        
+            <nombre>Mandarina</nombre>
+                        
+            <precio>1.25</precio>
+                    
+        </articulo>
+            
+    </en-stock>
+        
+    <fuera-stock>
+        
+    </fuera-stock>
+    
+</registro>
