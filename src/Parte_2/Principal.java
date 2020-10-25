@@ -9,14 +9,18 @@ public class Principal {
 		
 		GestorFicherosBinarios gestor = new GestorFicherosBinarios(new File("src/Parte_2/Empleados.dat"));
 		Scanner teclado = new Scanner(System.in);
+		Scanner teclado2 = new Scanner(System.in);
 		int opcion;
 		int id_empleado;
+		String apellido;
+		int departamento;
+		float salario;
 		
 		String[] apellidos = {"ALONSO","RODRIGUEZ","OTERO","JIMENEZ","MEJIAS"};
 		
 		int[] departamentos = {10, 80, 40, 20, 10};
 		
-		float[] salarios =  {(float) 4000.45, (float) 2500.00, (float) 1100.25, (float) 1687.30, (float) 6300.40};
+		float[] salarios =  {(float) 4000.45, (float) 2500.03, (float) 1100.25, (float) 1687.30, (float) 6300.40};
 		
 		while(true) 
 		{
@@ -42,9 +46,27 @@ public class Principal {
 						gestor.consultarDatos(id_empleado);
 					break;
 					
+				case 4:
+						System.out.print("Introduzca los datos del nuevo empleado:\n Id: ");
+						id_empleado=teclado.nextInt();
+						System.out.print("Apellido: ");
+						apellido=teclado2.nextLine();
+						System.out.print("Departamento: ");
+						departamento=teclado.nextInt();
+						System.out.print("Salario: ");
+						//Es importante tener en cuenta que el salario debe introducirse con una coma separando la parte entera de la
+						//decimal. Parece una tontería pero he estado literalmente dos horas atascado porque lo estaba metiendo con 
+						//un punto como separador entre entero y decimal y me daba un InputMismatchException, haciéndome pensar
+						//que algo estaba mal :)
+						salario=teclado.nextFloat();
+						gestor.insertarDatos(id_empleado, apellido, departamento, salario);
+					break;
+					
 				case 5: 
-					teclado.close();
-					System.exit(0);
+						System.out.println("¡Hasta pronto!");
+						teclado.close();
+						teclado2.close();
+						System.exit(0);
 					break;
 			
 			}

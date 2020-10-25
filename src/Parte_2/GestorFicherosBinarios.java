@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.InputMismatchException;
 
 public class GestorFicherosBinarios {
 	
@@ -28,23 +29,6 @@ public class GestorFicherosBinarios {
 			e.printStackTrace();
 		}
 		
-		for(String s: apellidos) 
-		{
-			
-			if(s.length()<10) 
-			{
-			
-				while(s.length()<10) 
-				{
-					
-					s+=" ";
-					
-				}
-				
-			}
-			
-		}
-		
 		try {
 			flujo.seek(0);
 		} catch (IOException e1) {
@@ -57,9 +41,14 @@ public class GestorFicherosBinarios {
 			
 			try {
 				flujo.writeInt(x+1);
-				flujo.writeUTF(apellidos[x]);
+				while(apellidos[x].length()<10) 
+				{
+					apellidos[x]+=" ";
+				}
+				flujo.writeBytes(apellidos[x].toString());
 				flujo.writeInt(departamento[x]);
 				flujo.writeFloat(salario[x]);
+				System.out.println(flujo.length());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -83,44 +72,23 @@ public class GestorFicherosBinarios {
 		try {
 			flujo = new RandomAccessFile(f1,"r");
 				
-			while(true) 
+			while(flujo.getFilePointer()<=flujo.length()) 
 			{
 				
 				try 
 				{
-					System.out.println("Id: "+flujo.readInt()+", Apellido: "+flujo.readUTF()+", Departamento: "+flujo.readInt()+", Salario: "+flujo.readFloat()+"\n");
+					System.out.print("Id: "+flujo.readInt());
+					byte[] buff = new byte[10];
+					flujo.read(buff);
+					String apellido = new String(buff);
+					System.out.print(", Apellido: "+apellido.trim());
+					System.out.print(", Departamento: "+flujo.readInt());
+					System.out.print(", Salario: "+flujo.readFloat()+"\n");			
 				}
 				catch(EOFException e) 
 				{
 					break;
 				}
-				
-				/*for(int x=0 ; x<=4 ; x++) 
-				{
-					System.out.print(flujo.readInt());
-				}
-				
-				System.out.print(", Apellido: ");
-				
-				for(int x=0 ; x<=20 ; x++) 
-				{
-					System.out.print(flujo.readUTF());
-				}
-				
-				System.out.print(", Departamento: ");
-				
-				for(int x=0 ; x<=8 ; x++) 
-				{
-					System.out.print(flujo.readInt());
-				}
-				
-				System.out.print(", Salario: ");
-				
-				for(int x=0 ; x<=24 ; x++) 
-				{
-					System.out.print(flujo.readFloat());
-				}
-				*/
 			
 		}
 		
@@ -145,35 +113,70 @@ public class GestorFicherosBinarios {
 			flujo = new RandomAccessFile(f1,"r");
 			
 			//Esto coloca el puntero a la altura del siguiente id
-			//flujo.seek(flujo.getFilePointer+52);
+			flujo.seek(22*(id-1));
+				
+			System.out.print("Id: "+flujo.readInt());
+			byte[] buff = new byte[10];
+			flujo.read(buff);
+			String apellido = new String(buff);
+			System.out.print(", Apellido: "+apellido);
+			System.out.print(", Departamento: "+flujo.readInt());
+			System.out.print(", Salario: "+flujo.readFloat()+"\n");			
+			flujo.close();
 			
-			while(flujo.getFilePointer()<flujo.length()) 
-			{
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void insertarDatos(int id, String apellido, int departamento, float salario)
+	{
+		boolean existe = false;
+		try {
+			flujo = new RandomAccessFile(f1,"rw");
+			
+			//Esto coloca el puntero a la altura del siguiente id
+			flujo.seek(22*(id-1));
 				
 				try 
 				{
 					if(flujo.readInt()==id) 
 					{
-						flujo.seek(flujo.getFilePointer()-4);
-						System.out.println("Id: "+flujo.readInt()+", Apellido: "+flujo.readUTF()+", Departamento: "+flujo.readInt()+", Salario: "+flujo.readFloat()+"\n");
+						System.out.println("Este empleado ya existe.");
+						existe=true;
 					}
-					else 
-					{
-						
-						flujo.readUTF();
-						flujo.readInt();
-						flujo.readFloat();
-						
-					}
-				}
-				catch(EOFException e) 
+				}catch(EOFException e) 
 				{
-					break;
+					
+				}
+			
+				
+			if(existe==false) 
+			{
+				try {
+					flujo.seek(flujo.length());
+					flujo.writeInt(id);
+					while(apellido.length()<10) 
+					{
+						apellido+=" ";
+					}
+					flujo.writeBytes(apellido.toString());
+					flujo.writeInt(departamento);
+					flujo.writeFloat((float)salario);
+					
+					System.out.println("Tarea realizada con éxito");
+				}
+				catch(InputMismatchException e) 
+				{
+					System.out.println("Dato no válido.");
+					System.out.println(e.getCause());
 				}
 			}
-				
-				//Este bucle seria el encargado de leer el id y verificar si es el que se ha introducido
-				System.out.println("Id: "+flujo.readInt()+", Apellido: "+flujo.readUTF()+", Departamento: "+flujo.readInt()+", Salario: "+flujo.readFloat()+"\n");
 				
 				
 			
@@ -186,7 +189,6 @@ public class GestorFicherosBinarios {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 }
