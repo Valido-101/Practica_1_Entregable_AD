@@ -33,7 +33,7 @@ public class Principal {
 		while(true) 
 		{
 			
-			System.out.println("Bienvenido al menú. Elija una opción: \n 1: Escribir datos en fichero \n 2: Leer datos \n 3: Consultar datos \n 4: Insertar empleado \n 5: Salir");
+			System.out.println("\nBienvenido al menú. Elija una opción: \n 1: Escribir datos en fichero \n 2: Leer datos \n 3: Consultar datos \n 4: Insertar empleado \n 5: Salir");
 			
 			//Se introduce la opción deseada del menú
 			opcion = teclado.nextInt();

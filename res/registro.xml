@@ -18,13 +18,7 @@
              
         </articulo>
          
-        <articulo>
-                 
-            <nombre>Plátano</nombre>
-                        
-            <precio>1.6</precio>
-                    
-        </articulo>
+        
                 
         
                 
@@ -40,7 +34,7 @@
             
             <nombre>Kiwi</nombre>
                         
-            <precio>3</precio>
+            <precio>2.0</precio>
                     
         </articulo>
                 
@@ -80,6 +74,6 @@
         
     <fuera-stock>
         
-    <articulo><nombre>Melón</nombre><precio>1.4</precio></articulo></fuera-stock>
+    <articulo><nombre>Melón</nombre><precio>1.4</precio></articulo><articulo><nombre>Plátano</nombre><precio>1.6</precio></articulo></fuera-stock>
     
 </registro>

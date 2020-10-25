@@ -32,7 +32,7 @@ public class Principal {
 		//Bucle infinito
 		while(true) 
 		{
-			System.out.println("Introduzca la opción deseada: \n1: Modificar artículo\n 2: Mover un elemento a fuera de stock\n 3: Mostrar artículos\n 4: Salir\n >");
+			System.out.println("\nIntroduzca la opción deseada: \n1: Modificar artículo\n 2: Mover un elemento a fuera de stock\n 3: Mostrar artículos\n 4: Salir\n >");
 			opcion=teclado.nextInt();
 			
 			//Switch case con el menú
