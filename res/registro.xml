@@ -2,7 +2,13 @@
         
     <en-stock>
     	
-    	
+    	<articulo>
+                        
+            <nombre>Manzana</nombre>
+                        
+            <precio>3.0</precio>
+                    
+        </articulo>
         
         <articulo>
            
@@ -20,13 +26,7 @@
                     
         </articulo>
                 
-        <articulo>
-                        
-            <nombre>Melón</nombre>
-                        
-            <precio>1.4</precio>
-                    
-        </articulo>
+        
                 
         <articulo>
                         
@@ -79,23 +79,7 @@
     </en-stock>
         
     <fuera-stock>
-    
-	    <articulo>
-	                        
-	            <nombre>Maracuyá</nombre>
-	                        
-	            <precio>1.25</precio>
-                    
-        </articulo>
         
-        <articulo>
-	                        
-	            <nombre>Uliningo</nombre>
-	                        
-	            <precio>2</precio>
-                    
-       </articulo>
-       
-     <articulo><nombre>Manzana</nombre><precio>1.7</precio></articulo></fuera-stock>
+    <articulo><nombre>Melón</nombre><precio>1.4</precio></articulo></fuera-stock>
     
 </registro>

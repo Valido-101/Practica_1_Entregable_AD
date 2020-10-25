@@ -32,7 +32,8 @@ public class Principal {
 			switch(opcion) 
 			{
 				case 1:
-						System.out.println("Introduzca el nombre del archivo a modificar: ");
+						teclado.nextLine();
+						System.out.println("Introduzca el nombre del artículo a modificar: ");
 						nombre_articulo=teclado.nextLine();
 						System.out.println("Introduzca el nuevo precio: ");
 						precio=teclado.nextFloat();
@@ -40,7 +41,8 @@ public class Principal {
 					break;
 				
 				case 2:
-					System.out.println("Introduzca el nombre del archivo a mover: ");
+					teclado.nextLine();
+					System.out.println("Introduzca el nombre del artículo a mover: ");
 					nombre_articulo=teclado.nextLine();
 					try {
 						gestor.fueraDeStock(nombre_articulo);

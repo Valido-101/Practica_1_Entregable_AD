@@ -94,10 +94,9 @@ public class GestorFruteria {
 	public void fueraDeStock (String articulo) throws SAXException, IOException, ParserConfigurationException, TransformerFactoryConfigurationError, TransformerException 
 	{
 		
-		   String nombre_articulo = null, precio = null;
+		   String nombre_articulo = "", precio = "";
 
 	       Document doc = (Document) DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(archivo_xml);
-	       doc.getDocumentElement().normalize();
 	       NodeList items = doc.getElementsByTagName("articulo");
 	        for (int i = 0; i < items.getLength(); i++) {
 	            Element element = (Element) items.item(i);
@@ -135,6 +134,8 @@ public class GestorFruteria {
 		Document doc = (Document) DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(archivo_xml);
 	    NodeList items = doc.getElementsByTagName("articulo");
 	    NodeList fuera_stock = doc.getElementsByTagName("fuera-stock");
+	    cont_fuera_stock=0;
+	    id_articulo=1;
 	    
 	    System.out.println("/--ARTÍCULOS EN STOCK--/\n");
 	    
